@@ -1,0 +1,25 @@
+# time in secunds
+STIM_TIME: 5
+WAIT_TIME: 1
+
+# visual parameters
+BACKGROUND_COLOR: Gainsboro
+TEXT_SIZE: 32
+
+# word parameters
+WORD_SIZE: 32
+WORD_POS: [0, 100]
+
+# answers parameters
+ANS_SIZE: 32
+ANS1_POS: [-100, -100]
+ANS2_POS: [100, -100]
+ANS_TEXT: {exp: bylo, new: nie bylo}
+KEYS: [z, m]
+
+# clock
+## show clock n second before trial end
+SHOW_CLOCK: -1
+CLOCK_POS: [0, 0]
+CLOCK_SIZE: 50
+
