@@ -1,5 +1,7 @@
+EEG_TRIGGERS: FALSE
+
 # time in secunds
-STIM_TIME: 5
+STIM_TIME: 1.5
 WAIT_TIME: 1
 
 # visual parameters
@@ -9,17 +11,29 @@ TEXT_SIZE: 32
 # word parameters
 WORD_SIZE: 32
 WORD_POS: [0, 100]
+TRAIN_TRIALS: 2
 
 # answers parameters
 ANS_SIZE: 32
 ANS1_POS: [-100, -100]
 ANS2_POS: [100, -100]
-ANS_TEXT: {exp: bylo, new: nie bylo}
+ANS_TEXT: {exp: TAK, new: NIE}
 KEYS: [z, m]
+
+# question
+QUESTION: Czy ten wyraz pojawił się w poprzednim zadaniu?
+QUESTION_POS: [0, 200]
+QUESTION_SIZE: 32
+
+# fixation
+FIX: +
+FIX_SIZE: 128
+FIX_TIME: 0.4
+WAIT_AFTER_FIX: 0
 
 # clock
 ## show clock n second before trial end
-SHOW_CLOCK: -1
+SHOW_CLOCK: 5
 CLOCK_POS: [0, 0]
 CLOCK_SIZE: 50
 

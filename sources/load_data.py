@@ -1,3 +1,4 @@
+import csv
 import yaml
 from os.path import join
 from numpy.random import shuffle
@@ -12,21 +13,21 @@ def load_config():
         raise Exception("Can't load config file")
 
 
-def load_words(filename):
+def prepare_words(file_name, experiment_version):
     try:
-        with open(join("stimulus", filename)) as file:
-            results = []
-            for line in file:
-                results.append(line.split("\n")[0])
-        return results
+        exp_data = []
+        train_data = []
+        with open(join("stimulus", file_name)) as file:
+            data = csv.reader(file)
+            for row in data:
+                if row[3] == "TREN":
+                    train_data.append(row + ["TREN"])
+                else:
+                    exp_data.append(row + ['exp' if row[3] == experiment_version else "new"])
     except:
-        raise Exception("Can't load {} file".format(filename))
+        raise Exception("Can't load {} file".format(file_name))
 
-
-def prepare_words(file_words_exp, file_words_new):
-    words_exp = [(word, "exp") for word in load_words(file_words_exp)]
-    words_new = [(word, "new") for word in load_words(file_words_new)]
-    words_all = words_exp + words_new
-    shuffle(words_all)
-    return words_all
+    shuffle(exp_data)
+    shuffle(train_data)
+    return exp_data, train_data
 
