@@ -12,10 +12,10 @@ def experiment_info():
 
     my_dlg = gui.Dlg(title="RM")
     my_dlg.addText('Informacje:')
-    my_dlg.addField('Identyfikator:')
+    my_dlg.addField('ID:')
     my_dlg.addField('Wiek:')
-    my_dlg.addField('Płeć:', choices=['Mężczyzna', "Kobieta"])
-    my_dlg.addField('Wersja testu:', choices=['A', "B"])
+    my_dlg.addField('Plec:', choices=['Mezczyzna', "Kobieta"])
+    my_dlg.addField('Wersja:', choices=['A', "B"])
 
     my_dlg.show()
     if not my_dlg.OK:

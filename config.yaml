@@ -1,7 +1,8 @@
-EEG_TRIGGERS: FALSE
+EEG_TRIGGERS: TRUE
+OPHTHALMIC_PROCEDURE: False
 
 # time in secunds
-STIM_TIME: 1.5
+STIM_TIME: 1000
 WAIT_TIME: 1
 
 # visual parameters
@@ -10,30 +11,33 @@ TEXT_SIZE: 32
 
 # word parameters
 WORD_SIZE: 32
-WORD_POS: [0, 100]
+WORD_POS: [0, 0]
 TRAIN_TRIALS: 2
 
 # answers parameters
+ANS_TIME_START: 1
 ANS_SIZE: 32
-ANS1_POS: [-100, -100]
-ANS2_POS: [100, -100]
+ANS1_POS: [-200, -200]
+ANS2_POS: [200, -200]
 ANS_TEXT: {exp: TAK, new: NIE}
 KEYS: [z, m]
 
 # question
+QUESTION_TIME_START: 1
 QUESTION: Czy ten wyraz pojawił się w poprzednim zadaniu?
 QUESTION_POS: [0, 200]
 QUESTION_SIZE: 32
 
 # fixation
 FIX: +
-FIX_SIZE: 128
+FIX_SIZE: 64
 FIX_TIME: 0.4
 WAIT_AFTER_FIX: 0
 
 # clock
-## show clock n second before trial end
-SHOW_CLOCK: 5
+## show clock n second after trial start
+SHOW_CLOCK: 10000
 CLOCK_POS: [0, 0]
 CLOCK_SIZE: 50
 
+EXIT_KEY: f7

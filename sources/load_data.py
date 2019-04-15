@@ -17,17 +17,19 @@ def prepare_words(file_name, experiment_version):
     try:
         exp_data = []
         train_data = []
-        with open(join("stimulus", file_name)) as file:
+        with open(join("stimulus", file_name), 'r') as file:
             data = csv.reader(file)
-            for row in data:
-                if row[3] == "TREN":
-                    train_data.append(row + ["TREN"])
-                else:
-                    exp_data.append(row + ['exp' if row[3] == experiment_version else "new"])
+            for idx, row in enumerate(data):
+                if idx != 0:
+                    if row[3] == "TREN":
+                        train_data.append({'NAWL_NR': row[0], 'WORD': row[1], 'WORD_EMO': row[2], 'WORD_LIST': row[3],
+                                           'WORD_TYPE': "TREN"})
+                    else:
+                        exp_data.append({'NAWL_NR': row[0], 'WORD': row[1], 'WORD_EMO': row[2], 'WORD_LIST': row[3],
+                                         'WORD_TYPE': 'exp' if row[3] == experiment_version else "new"})
     except:
         raise Exception("Can't load {} file".format(file_name))
 
     shuffle(exp_data)
     shuffle(train_data)
     return exp_data, train_data
-

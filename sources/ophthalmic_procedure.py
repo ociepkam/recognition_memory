@@ -8,7 +8,7 @@ from sources.triggers import prepare_trigger, TriggerTypes, send_trigger
 
 def ophthalmic_procedure(win, screen_res, frames_per_sec, trigger_no, triggers_list, text_size,
                          send_eeg_triggers=False, send_nirs_triggers=False, port_eeg=None, port_nirs=None,
-                         vis_offset=60, secs_of_msg=5, secs_of_blinks=9, secs_of_saccades=9):
+                         vis_offset=60, secs_of_msg=5, secs_of_blinks=9, secs_of_saccades=9, exit_key='f7'):
     """
     :param port_nirs:
     :param port_eeg:
@@ -43,7 +43,7 @@ def ophthalmic_procedure(win, screen_res, frames_per_sec, trigger_no, triggers_l
     ophthalmic_info.setAutoDraw(True)
     for _ in range(frames_per_sec * secs_of_msg):
         win.flip()
-        check_exit()
+        check_exit(exit_key)
     ophthalmic_info.setAutoDraw(False)
     win.flip()
 
@@ -54,12 +54,12 @@ def ophthalmic_procedure(win, screen_res, frames_per_sec, trigger_no, triggers_l
             send_trigger(port_eeg=port_eeg, port_nirs=port_nirs, trigger_no=trigger_no,
                          send_eeg_triggers=send_eeg_triggers, send_nirs_triggers=send_nirs_triggers)
         win.flip()
-        check_exit()
+        check_exit(exit_key)
 
     corners_info.setAutoDraw(True)
     for _ in range(frames_per_sec * secs_of_msg):
         win.flip()
-        check_exit()
+        check_exit(exit_key)
     corners_info.setAutoDraw(False)
 
     [item.setAutoDraw(True) for item in crosses]
@@ -70,7 +70,7 @@ def ophthalmic_procedure(win, screen_res, frames_per_sec, trigger_no, triggers_l
             send_trigger(port_eeg=port_eeg, port_nirs=port_nirs, trigger_no=trigger_no,
                          send_eeg_triggers=send_eeg_triggers, send_nirs_triggers=send_nirs_triggers)
         win.flip()
-        check_exit()
+        check_exit(exit_key)
     [item.setAutoDraw(False) for item in crosses]
     win.flip()
 

@@ -25,7 +25,7 @@ def read_text_from_file(file_name, insert=''):
     return ''.join(msg)
 
 
-def show_info(win, file_name, text_size, screen_width, insert='', show_time=999999):
+def show_info(win, file_name, text_size, screen_width, insert='', show_time=999999, exit_key='f7'):
     """
     Clear way to show info message into screen.
     :param name: part name
@@ -51,20 +51,20 @@ def show_info(win, file_name, text_size, screen_width, insert='', show_time=9999
     while timer.getTime() < show_time:
         event.clearEvents(eventType='mouse')
         key = event.getKeys()
-        if key in [['q'], ['return'], ['space']]:
-            if key == ['q']:
+        if key in [[exit_key], ['return'], ['space']]:
+            if key == [exit_key]:
                 logging.critical('Experiment finished by user! {} pressed.'.format(key[0]))
                 exit(0)
             break
     win.flip()
 
 
-def show_image(win, file_name, size):
+def show_image(win, file_name, size, exit_key='f7'):
     image = visual.ImageStim(win=win, image=os.path.join('images', file_name), interpolate=True, size=size)
     image.draw()
     win.flip()
-    key = event.waitKeys(keyList=['q', 'return', 'space'])
-    if key == ['q']:
+    key = event.waitKeys(keyList=[exit_key, 'return', 'space'])
+    if key == [exit_key]:
         logging.critical('Experiment finished by user! {} pressed.'.format(key[0]))
         exit(0)
     win.flip()

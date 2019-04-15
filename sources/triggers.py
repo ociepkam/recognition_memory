@@ -3,7 +3,7 @@ import time
 
 class TriggerTypes(object):
     BLINK = 'BLINK'
-    WORD = 'GO'
+    WORD = 'ST'
     REACTION = 'RE'
 
 
